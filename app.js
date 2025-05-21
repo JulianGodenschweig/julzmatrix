@@ -131,24 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
             "retina_detect": true
         });
     }
-
-    // Enhanced loading screen with progress bar
-    const loadingScreen = document.querySelector('.loading-screen');
-    const progressBar = document.querySelector('.progress');
-    
-    // Simulate loading progress
-    let progress = 0;
-    const progressInterval = setInterval(() => {
-        progress += Math.random() * 10;
-        progressBar.style.width = `${Math.min(progress, 100)}%`;
-        
-        if (progress >= 100) {
-            clearInterval(progressInterval);
-            loadingScreen.classList.add('fade-out');
-            setTimeout(() => loadingScreen.remove(), 800);
-        }
-    }, 200);
-
     // Background Video Optimization
     function optimizeVideos() {
         document.querySelectorAll('video').forEach(video => {
@@ -290,26 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Scroll Animations
     function animateOnScroll() {
-        const sections = document.querySelectorAll('.section');
-        const cards = document.querySelectorAll('.project-card, .card, .skill-card, .contact-container > div');
-        
-        sections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top;
-            const sectionVisible = 150;
-            
-            if (sectionTop < window.innerHeight - sectionVisible) {
-                section.classList.add('visible');
-            }
-        });
-        
-        cards.forEach(card => {
-            const cardTop = card.getBoundingClientRect().top;
-            const cardVisible = 100;
-            
-            if (cardTop < window.innerHeight - cardVisible) {
-                card.classList.add('visible');
-            }
-        });
+        // This is now handled by GSAP in gsap-animations.js
     }
     
     // Initial animation trigger
@@ -431,6 +394,12 @@ document.addEventListener('DOMContentLoaded', function() {
         matrixCanvas.height = window.innerHeight;
     });
 });
+window.addEventListener('resize', () => {
+    matrixCanvas.width = window.innerWidth;
+    matrixCanvas.height = window.innerHeight;
+    ScrollTrigger.refresh(); // Refresh scroll triggers on resize
+});
+
 
 // Smooth scroll function for buttons
 function smoothScroll(target) {
@@ -456,3 +425,234 @@ function smoothScroll(target) {
         window.requestAnimationFrame(step);
     }
 }
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize cursor trail
+    const cursor = document.querySelector('.cursor-trail');
+    const footprintsContainer = document.querySelector('.footprints-container');
+    let isTouchDevice = 'ontouchstart' in window;
+    
+    if (!isTouchDevice && cursor) {
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+            
+            // Create footprint
+            if (Math.random() > 0.7) {
+                const footprint = document.createElement('div');
+                footprint.classList.add('footprint');
+                footprint.style.left = `${e.clientX}px`;
+                footprint.style.top = `${e.clientY}px`;
+                footprintsContainer.appendChild(footprint);
+                
+                // Remove footprint after animation
+                setTimeout(() => {
+                    footprint.remove();
+                }, 2000);
+            }
+        });
+        
+        // Cursor hover effects
+        document.querySelectorAll('a, button, .skill-card, .project-card').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                gsap.to(cursor, {
+                    width: 40,
+                    height: 40,
+                    background: 'rgba(114, 161, 222, 0.5)',
+                    duration: 0.3
+                });
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                gsap.to(cursor, {
+                    width: 20,
+                    height: 20,
+                    background: 'rgba(114, 161, 222, 0.3)',
+                    duration: 0.3
+                });
+            });
+        });
+    } else if (cursor) {
+        cursor.style.display = 'none';
+    }
+
+    // Audio player functionality
+    const playBtn = document.getElementById('playBtn');
+    const bgAudio = document.getElementById('bgAudio');
+    
+    if (playBtn && bgAudio) {
+        playBtn.addEventListener('click', function() {
+            if (bgAudio.paused) {
+                bgAudio.play();
+                this.innerHTML = '<i class="bx bx-pause"></i>';
+            } else {
+                bgAudio.pause();
+                this.innerHTML = '<i class="bx bx-play"></i>';
+            }
+        });
+    }
+
+    // Hero text animation
+    gsap.from(".hero-info-title", {
+        opacity: 0,
+        y: -20,
+        duration: 1,
+        ease: "power2.out"
+    });
+
+    gsap.from(".hero-info h1", {
+        opacity: 0,
+        x: -50,
+        duration: 1,
+        delay: 0.3,
+        ease: "power2.out"
+    });
+
+    gsap.from(".hero-info p", {
+        opacity: 0,
+        x: -50,
+        duration: 1,
+        delay: 0.6,
+        ease: "power2.out"
+    });
+
+    gsap.from(".hero-buttons", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        delay: 0.9,
+        ease: "power2.out"
+    });
+
+    // Section reveal animations
+    gsap.utils.toArray(".section").forEach(section => {
+        ScrollTrigger.create({
+            trigger: section,
+            start: "top 80%",
+            onEnter: () => {
+                gsap.to(section, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power2.out"
+                });
+            }
+        });
+    });
+
+    // Card animations
+    gsap.utils.toArray(".project-card, .card, .skill-card, .contact-container > div").forEach(card => {
+        ScrollTrigger.create({
+            trigger: card,
+            start: "top 90%",
+            onEnter: () => {
+                gsap.to(card, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    delay: Math.random() * 0.3
+                });
+            }
+        });
+    });
+
+    // Matrix rain enhancement
+    const matrixCanvas = document.getElementById('matrixCanvas');
+    if (matrixCanvas) {
+        ScrollTrigger.create({
+            start: 0,
+            end: "max",
+            onUpdate: (self) => {
+                const progress = self.progress;
+                matrixCanvas.style.opacity = 0.15 + (progress * 0.1);
+            }
+        });
+    }
+
+    // Smooth scroll for all links
+   function smoothScroll(target) {
+    const element = document.querySelector(target);
+    if (element) {
+        gsap.to(window, {
+            scrollTo: {
+                y: element,
+                offsetY: 70
+            },
+            duration: 1,
+            ease: "power2.inOut"
+        });
+    }
+}
+
+    // Hover animations for buttons
+    document.querySelectorAll('.primary-btn, .secondary-btn').forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+            gsap.to(btn, {
+                y: -3,
+                boxShadow: '0 10px 20px rgba(114, 161, 222, 0.3)',
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+            gsap.to(btn, {
+                y: 0,
+                boxShadow: 'none',
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+    });
+
+    // Project card hover animations
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            gsap.to(card, {
+                y: -10,
+                boxShadow: '0 20px 40px rgba(114, 127, 222, 0.3)',
+                duration: 0.4,
+                ease: "power2.out"
+            });
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            gsap.to(card, {
+                y: 0,
+                boxShadow: 'none',
+                duration: 0.4,
+                ease: "power2.out"
+            });
+        });
+    });
+
+    // Mobile menu animation
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', function() {
+            if (this.classList.contains('active')) {
+                gsap.to(navLinks, {
+                    x: '100%',
+                    opacity: 0,
+                    duration: 0.4,
+                    ease: "power2.inOut"
+                });
+            } else {
+                gsap.fromTo(navLinks, 
+                    { x: '100%', opacity: 0 },
+                    { x: '0%', opacity: 1, duration: 0.4, ease: "power2.inOut" }
+                );
+            }
+        });
+    }
+});
