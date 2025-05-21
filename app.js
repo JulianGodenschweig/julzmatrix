@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScroll = currentScroll;
         
         // Animate elements on scroll
-        animateElements();
+        animateOnScroll();
     });
     
     // Mobile Menu Toggle
@@ -289,21 +289,31 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Scroll Animations
-    function animateElements() {
-        const elements = document.querySelectorAll('.slide-in-card, .fade-card, .floating-card');
+    function animateOnScroll() {
+        const sections = document.querySelectorAll('.section');
+        const cards = document.querySelectorAll('.project-card, .card, .skill-card, .contact-container > div');
         
-        elements.forEach(el => {
-            const elementTop = el.getBoundingClientRect().top;
-            const elementVisible = 150;
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const sectionVisible = 150;
             
-            if (elementTop < window.innerHeight - elementVisible) {
-                el.classList.add('visible');
+            if (sectionTop < window.innerHeight - sectionVisible) {
+                section.classList.add('visible');
+            }
+        });
+        
+        cards.forEach(card => {
+            const cardTop = card.getBoundingClientRect().top;
+            const cardVisible = 100;
+            
+            if (cardTop < window.innerHeight - cardVisible) {
+                card.classList.add('visible');
             }
         });
     }
     
     // Initial animation trigger
-    animateElements();
+    animateOnScroll();
 
     // Form Handling
     const contactForm = document.getElementById('contactForm');
@@ -445,12 +455,4 @@ function smoothScroll(target) {
         
         window.requestAnimationFrame(step);
     }
-}
-
-// Easing function for smooth scrolling
-function easeInOutCubic(t, b, c, d) {
-    t /= d/2;
-    if (t < 1) return c/2*t*t*t + b;
-    t -= 2;
-    return c/2*(t*t*t + 2) + b;
 }

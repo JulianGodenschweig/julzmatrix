@@ -624,6 +624,32 @@ section {
     border-radius: 3px;
 }
 
+/* Scroll Animation Classes */
+.section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card, .card, .skill-card, .contact-container > div {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.project-card.visible, 
+.card.visible, 
+.skill-card.visible, 
+.contact-container > div.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* ===== SKILLS SECTION ===== */
 .skills-grid {
     display: grid;
@@ -829,17 +855,6 @@ section {
     padding: 30px;
     border: 1px solid rgba(114, 127, 222, 0.2);
     transition: var(--transition);
-}
-
-.slide-in-card {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-.slide-in-card.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .project-card:hover {
@@ -1355,7 +1370,7 @@ section {
         gap: 10px;
     }
     
-    .download-btn span {
+    .download-btn .download-text {
         display: none;
     }
     
