@@ -8,17 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JulzMatrix | Cyber Developer Portfolio</title>
     <meta name="description" content="Julian Godenschweig's cutting-edge developer portfolio with immersive effects">
-    <meta name="keywords" content="frontend developer, web developer, portfolio, HTML, CSS, JavaScript, animations">
+    <meta name="keywords" content="frontend developer, web developer, portfolio, HTML, CSS, JavaScript, animations, ethical hacking">
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="icon" type="image/png" href="images/May 21, 2025, 10_32_22 PM.png">
 </head>
 <body>
-     <div class="cursor-trail"></div>
+    <div class="cursor-trail"></div>
     <canvas id="matrixCanvas"></canvas>
-    </div>
-     <div class="audio-player">
+    <div class="audio-player">
         <button id="playBtn" class="audio-control">
             <i class='bx bx-play'></i>
         </button>
@@ -26,7 +25,7 @@
             <source src="Iframe OneRepublic - Nobody (from Kaiju No. 8) [Official Lyric Video] [ChukpOHfAI8].mp3" type="audio/mpeg">
         </audio>
     </div>
-     <div class="footprints-container"></div>
+    <div class="footprints-container"></div>
 
     <div class="container">
         <div class="background-wrapper">
@@ -37,7 +36,10 @@
         <header id="navbar">
             <div class="left">
                 <div class="logo-container"></div>
-                <h1><span class="gradient-text">Julz</span>Matrix</h1>
+                <div class="header-title">
+                    <h1><span class="gradient-text">Julz</span>Matrix</h1>
+                    <div class="real-clock"></div>
+                </div>
             </div>
             
             <div class="hamburger" id="hamburger">
@@ -50,6 +52,8 @@
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
 
@@ -73,7 +77,7 @@
             <section class="hero section" id="about">
                 <div class="hero-info">
                     <div class="hero-info-title animate__animated animate__fadeInDown">
-                       <i class='bx bx-code-alt'></i> FRONT-END DEVELOPER
+                       <i class='bx bx-code-alt'></i> FRONT-END DEVELOPER & CYBER ENTHUSIAST
                     </div>
                     <h1 class="animate__animated animate__fadeInLeft">Crafting <span class="gradient">Digital</span> Realities <span class="gradient">Beyond</span> Imagination</h1>
                     <p class="animate__animated animate__fadeInLeft animate__delay-1s">I'm Julian, a front-end developer merging art and code to create immersive web experiences. Based in Namibia, delivering solutions worldwide.</p>
@@ -88,7 +92,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img  src="images/digital brain.png"  class="float-animation"></img>
+                    <img src="images/digital brain.png" class="float-animation"></img>
                 </div>
             </section>
 
@@ -158,8 +162,98 @@
                         <video autoplay loop muted playsinline src="videos/glob.mp4" type="video/mp4" loading="lazy" class="hover-zoom"></video>
                     </div>
                 </div>
+
+                <!-- New Cybersecurity Section -->
+                <div class="cyber-section">
+                    <h2 class="cyber-title"><i class='bx bx-shield-quarter'></i> Cybersecurity Essentials</h2>
+                    
+                    <div class="cyber-grid">
+                        <div class="cyber-card">
+                            <h3><i class='bx bxl-kali-linux'></i> Kali Linux</h3>
+                            <p>The premier penetration testing distribution with 600+ security tools pre-installed. Kali is Debian-based and optimized for security assessments.</p>
+                            <div class="distro-comparison">
+                                <h4>Top Security Distros:</h4>
+                                <ul>
+                                    <li><strong>Kali</strong> - Penetration testing</li>
+                                    <li><strong>Parrot OS</strong> - Security & privacy</li>
+                                    <li><strong>BlackArch</strong> - Arch-based security</li>
+                                    <li><strong>Ubuntu</strong> - General purpose with security tools</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="cyber-card">
+                            <h3><i class='bx bx-network-chart'></i> Essential Tools</h3>
+                            <div class="tool-list">
+                                <div class="tool-item">
+                                    <h4>Metasploit</h4>
+                                    <p>Penetration testing framework for developing and executing exploits</p>
+                                </div>
+                                <div class="tool-item">
+                                    <h4>Nmap</h4>
+                                    <p>Network discovery and security auditing tool</p>
+                                </div>
+                                <div class="tool-item">
+                                    <h4>Wireshark</h4>
+                                    <p>Network protocol analyzer for troubleshooting</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="cyber-card">
+                            <h3><i class='bx bx-lock-alt'></i> Security Tips</h3>
+                            <ul class="security-tips">
+                                <li>Always use VPNs on public networks</li>
+                                <li>Enable 2FA on all critical accounts</li>
+                                <li>Regularly update your software</li>
+                                <li>Use password managers with strong passwords</li>
+                                <li>Configure firewalls (UFW/iptables)</li>
+                            </ul>
+                            <div class="hat-types">
+                                <span class="hat-tag white-hat">White Hat</span>
+                                <span class="hat-tag black-hat">Black Hat</span>
+                                <span class="hat-tag red-hat">Red Hat</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-section">
+                        <h3>Ethical Hacking Roadmap (2025)</h3>
+                        <div class="roadmap-steps">
+                            <div class="roadmap-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Networking Fundamentals</h4>
+                                    <p>TCP/IP, DNS, HTTP/HTTPS, VPNs</p>
+                                </div>
+                            </div>
+                            <div class="roadmap-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Linux Proficiency</h4>
+                                    <p>Bash scripting, system administration</p>
+                                </div>
+                            </div>
+                            <div class="roadmap-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Security Tools</h4>
+                                    <p>Nmap, Wireshark, Metasploit, Burp Suite</p>
+                                </div>
+                            </div>
+                            <div class="roadmap-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Certifications</h4>
+                                    <p>CEH, OSCP, CompTIA Security+</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
+            <!-- Projects Section -->
             <section class="projects section" id="projects">
                 <h1 class="section-title">My <span class="gradient">Cyber Creations</span> 🚀</h1>
                 <div class="projects-container">
@@ -217,6 +311,87 @@
                                 <span class="tech-tag">CSS3</span>
                                 <span class="tech-tag">JavaScript</span>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blog Section -->
+            <section class="blog-section section" id="blog">
+                <h1 class="section-title">Cyber <span class="gradient">Blog</span> 📝</h1>
+                <div class="blog-container">
+                    <div class="blog-card floating-card">
+                        <div class="blog-header">
+                            <h2><i class='bx bx-shield-quarter'></i> Ethical Hacking Basics</h2>
+                            <span class="blog-date">May 24, 2025</span>
+                        </div>
+                        <div class="blog-content">
+                            <p>Ethical hacking helps secure systems by identifying vulnerabilities before malicious actors can exploit them. Here are some essential tools:</p>
+                            <ul class="blog-list">
+                                <li><strong>Nmap</strong> - Network scanning to discover hosts and services</li>
+                                <li><strong>Wireshark</strong> - Packet analysis for network troubleshooting</li>
+                                <li><strong>MITM Tools</strong> - Understand man-in-the-middle attack vectors</li>
+                            </ul>
+                            <p class="disclaimer">Note: Only use these tools on systems you own or have permission to test.</p>
+                        </div>
+                    </div>
+
+                    <div class="blog-card floating-card">
+                        <div class="blog-header">
+                            <h2><i class='bx bx-map'></i> Google Maps API Guide</h2>
+                            <span class="blog-date">May 20, 2025</span>
+                        </div>
+                        <div class="blog-content">
+                            <p>Adding Google Maps to your business website is simple with their API:</p>
+                            <ol class="blog-list">
+                                <li>Get an API key from Google Cloud Console</li>
+                                <li>Add the script to your HTML: <code>&lt;script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY"&gt;&lt;/script&gt;</code></li>
+                                <li>Create a div with ID "map" in your HTML</li>
+                                <li>Initialize the map with JavaScript</li>
+                            </ol>
+                            <p>Great for cafes, barbers, nail salons, and other local businesses!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="services-section section" id="services">
+                <h1 class="section-title">Freelance <span class="gradient">Services</span> 💼</h1>
+                <div class="services-container">
+                    <div class="service-card floating-card">
+                        <div class="service-icon">
+                            <i class='bx bx-globe'></i>
+                        </div>
+                        <h3>Website Development</h3>
+                        <p>Custom websites tailored to your business needs. Responsive design, modern aesthetics, and optimized performance.</p>
+                        <div class="service-pricing">
+                            <span class="price">N$1,500 - N$5,000</span>
+                            <span class="per-page">per page</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card floating-card">
+                        <div class="service-icon">
+                            <i class='bx bx-cut'></i>
+                        </div>
+                        <h3>Style Clinic Templates</h3>
+                        <p>Specialized templates for barbers, nail salons, and beauty clinics. Booking systems, galleries, and promotions.</p>
+                        <div class="service-pricing">
+                            <span class="price">N$3,000 - N$8,000</span>
+                            <span class="per-page">complete site</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card floating-card">
+                        <div class="service-icon">
+                            <i class='bx bx-store'></i>
+                        </div>
+                        <h3>Business Listings</h3>
+                        <p>Google Maps integration, business profiles, and local SEO to help customers find your physical location.</p>
+                        <div class="service-pricing">
+                            <span class="price">N$1,000 - N$2,500</span>
+                            <span class="per-page">setup</span>
                         </div>
                     </div>
                 </div>
@@ -282,6 +457,8 @@
                     <a href="#about" class="footer-link">About</a>
                     <a href="#skills" class="footer-link">Skills</a>
                     <a href="#projects" class="footer-link">Projects</a>
+                    <a href="#blog" class="footer-link">Blog</a>
+                    <a href="#services" class="footer-link">Services</a>
                     <a href="#contact" class="footer-link">Contact</a>
                 </div>
             </div>
@@ -290,8 +467,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="js/gsap-animations.js"></script> <!-- New GSAP animations file -->
-    <script src="js/app.js"></script>
+    <script src="js/gsap-animations.js"></script>
 </body>
 </html>
