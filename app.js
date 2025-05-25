@@ -673,3 +673,381 @@ document.addEventListener('keydown', (e) => {
         });
     }
 });
+
+// Cybersecurity Modals Data
+const cyberModals = {
+    'kali-modal': {
+        title: 'Kali Linux Setup Guide',
+        content: `
+            <h4>Installation Steps:</h4>
+            <ol>
+                <li>Download Kali ISO from official site</li>
+                <li>Create bootable USB with Rufus/BalenaEtcher</li>
+                <li>Boot from USB and select "Graphical Install"</li>
+                <li>Follow installation wizard (recommend full disk encryption)</li>
+                <li>Update system: <code>sudo apt update && sudo apt full-upgrade -y</code></li>
+            </ol>
+            
+            <h4>Essential Post-Install:</h4>
+            <ul>
+                <li>Install guest additions for VMs</li>
+                <li>Configure network mirror for faster updates</li>
+                <li>Set up persistent storage for live USBs</li>
+                <li>Create non-root user for daily tasks</li>
+            </ul>
+            
+            <div class="disclaimer">
+                <strong>Note:</strong> Only use on systems you own or have permission to test.
+            </div>
+        `
+    },
+    'tools-modal': {
+        title: 'Security Tools Usage',
+        content: `
+            <h4>Nmap Basic Commands:</h4>
+            <pre><code>nmap -sV -O target.com  # Version/OS detection
+nmap -p 1-1000 target.com  # Port range scan
+nmap --script vuln target.com  # Vulnerability scan</code></pre>
+            
+            <h4>Metasploit Framework:</h4>
+            <pre><code>msfconsole  # Launch framework
+search exploit_name  # Find exploits
+use exploit/path  # Select exploit
+set RHOSTS target.com  # Configure target
+exploit  # Run the exploit</code></pre>
+            
+            <h4>Wireshark Tips:</h4>
+            <ul>
+                <li>Use display filters to focus on specific traffic</li>
+                <li>Follow TCP streams to reconstruct sessions</li>
+                <li>Export objects from HTTP traffic</li>
+            </ul>
+        `
+    },
+    'security-modal': {
+        title: 'Advanced Security Practices',
+        content: `
+            <h4>Double Your Security:</h4>
+            <ol>
+                <li>Enable hardware security keys for critical accounts</li>
+                <li>Implement network segmentation</li>
+                <li>Use application allowlisting</li>
+                <li>Regularly audit permissions and access controls</li>
+                <li>Monitor for credential leaks with HaveIBeenPwned</li>
+            </ol>
+            
+            <h4>Hat Types Explained:</h4>
+            <div class="hat-types-modal">
+                <div class="hat-type">
+                    <span class="hat-tag white-hat">White Hat</span>
+                    <p>Ethical hackers working legally to improve security</p>
+                </div>
+                <div class="hat-type">
+                    <span class="hat-tag black-hat">Black Hat</span>
+                    <p>Malicious hackers exploiting systems illegally</p>
+                </div>
+                <div class="hat-type">
+                    <span class="hat-tag red-hat">Red Hat</span>
+                    <p>Aggressive defenders targeting black hat infrastructure</p>
+                </div>
+            </div>
+        `
+    },
+    'phishing-modal': {
+        title: 'Phishing Defense Guide',
+        content: `
+            <h4>Spotting Fake Emails:</h4>
+            <ul>
+                <li>Check sender's email address (not just display name)</li>
+                <li>Look for poor grammar and spelling mistakes</li>
+                <li>Beware of urgent or threatening language</li>
+                <li>Verify unexpected attachments or links</li>
+            </ul>
+            
+            <h4>Identifying Fake Links:</h4>
+            <ol>
+                <li>Hover over links to see actual destination</li>
+                <li>Check for HTTPS and valid certificates</li>
+                <li>Look for subtle domain misspellings</li>
+                <li>Use URL scanners like VirusTotal</li>
+            </ol>
+            
+            <h4>Educational Site Cloning:</h4>
+            <div class="disclaimer">
+                <strong>Disclaimer:</strong> Only clone sites you own or have permission to test.
+            </div>
+            <pre><code># Basic site cloning with wget
+wget --mirror --convert-links --adjust-extension --page-requisites --no-parent http://example.com</code></pre>
+        `
+    },
+    'data-modal': {
+        title: 'Data Security Methods',
+        content: `
+            <h4>Excel Security:</h4>
+            <ul>
+                <li>Password protect sensitive files</li>
+                <li>Disable macros from untrusted sources</li>
+                <li>Use data validation to prevent injection</li>
+                <li>Remove metadata before sharing</li>
+            </ul>
+            
+            <h4>Database Protection:</h4>
+            <ol>
+                <li>Implement field-level encryption</li>
+                <li>Use parameterized queries to prevent SQLi</li>
+                <li>Regularly backup with encryption</li>
+                <li>Monitor for unusual access patterns</li>
+            </ol>
+            
+            <h4>Data Analysis Security:</h4>
+            <p>When working with sensitive statistics:</p>
+            <ul>
+                <li>Anonymize personally identifiable information</li>
+                <li>Use differential privacy techniques</li>
+                <li>Implement k-anonymity for datasets</li>
+                <li>Secure data pipelines end-to-end</li>
+            </ul>
+        `
+    },
+    'dev-modal': {
+        title: 'Secure Development Practices',
+        content: `
+            <h4>Essential Security Principles:</h4>
+            <ul>
+                <li>Validate all user inputs</li>
+                <li>Implement proper authentication and authorization</li>
+                <li>Use prepared statements for database queries</li>
+                <li>Sanitize output to prevent XSS</li>
+                <li>Implement CSRF protection</li>
+            </ul>
+            
+            <h4>OWASP Top 10 to Address:</h4>
+            <ol>
+                <li>Injection</li>
+                <li>Broken Authentication</li>
+                <li>Sensitive Data Exposure</li>
+                <li>XML External Entities (XXE)</li>
+                <li>Broken Access Control</li>
+                <li>Security Misconfiguration</li>
+                <li>Cross-Site Scripting (XSS)</li>
+                <li>Insecure Deserialization</li>
+                <li>Using Components with Known Vulnerabilities</li>
+                <li>Insufficient Logging & Monitoring</li>
+            </ol>
+            
+            <h4>Secure Coding Resources:</h4>
+            <a href="https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/" target="_blank">
+                <i class='bx bx-link-external'></i> OWASP Secure Coding Practices
+            </a>
+        `
+    },
+    'swe-modal': {
+        title: 'Secure Software Engineering',
+        content: `
+            <h4>Key Practices:</h4>
+            <ul>
+                <li><strong>Input validation & sanitization:</strong> Validate all user inputs on both client and server sides</li>
+                <li><strong>Secure authentication flows:</strong> Implement proper session management, MFA, and password policies</li>
+                <li><strong>Dependency vulnerability scanning:</strong> Use tools like npm audit, Snyk, or Dependabot</li>
+                <li><strong>Secure API design principles:</strong> Proper authentication, rate limiting, and input validation</li>
+            </ul>
+            
+            <h4>Dev Best Practices:</h4>
+            <ol>
+                <li>Follow the principle of least privilege</li>
+                <li>Implement proper error handling (without leaking sensitive info)</li>
+                <li>Use security headers (CSP, XSS Protection, HSTS)</li>
+                <li>Regularly update dependencies</li>
+                <li>Conduct code reviews with security in mind</li>
+            </ol>
+            
+            <h4>Resources:</h4>
+            <a href="https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/" target="_blank">
+                <i class='bx bx-link-external'></i> OWASP Secure Coding Practices
+            </a>
+        `
+    },
+    're-modal': {
+        title: 'Reverse Engineering Basics',
+        content: `
+            <h4>Essential Tools:</h4>
+            <div class="tool-list">
+                <div class="tool-item">
+                    <h4>Ghidra</h4>
+                    <p>NSA's open-source reverse engineering tool with decompiler</p>
+                </div>
+                <div class="tool-item">
+                    <h4>IDA Pro</h4>
+                    <p>Industry standard disassembler and debugger</p>
+                </div>
+                <div class="tool-item">
+                    <h4>Radare2</h4>
+                    <p>Open-source framework for reverse engineering</p>
+                </div>
+            </div>
+            
+            <h4>Techniques:</h4>
+            <ul>
+                <li><strong>Static Analysis:</strong> Examining code without execution (disassembly, decompilation)</li>
+                <li><strong>Dynamic Analysis:</strong> Runtime analysis with debuggers and sandboxes</li>
+                <li>Control flow analysis</li>
+                <li>String extraction and pattern matching</li>
+            </ul>
+            
+            <h4>Get Started:</h4>
+            <ol>
+                <li>Install Ghidra from <a href="https://ghidra-sre.org/" target="_blank">ghidra-sre.org</a></li>
+                <li>Practice with crackmes from <a href="https://crackmes.one/" target="_blank">crackmes.one</a></li>
+                <li>Learn assembly basics for your target architecture</li>
+            </ol>
+        `
+    },
+    'net-modal': {
+        title: 'Network Threat Detection',
+        content: `
+            <h4>Monitoring Techniques:</h4>
+            <ul>
+                <li><strong>ARP monitoring:</strong> Detect unknown IP-MAC associations that may indicate spoofing</li>
+                <li><strong>Wireshark filters:</strong> Use filters like <code>tcp.flags.syn==1 and tcp.flags.ack==0</code> for SYN scans</li>
+                <li><strong>SIEM tools:</strong> Configure alerts for unusual traffic patterns or known attack signatures</li>
+            </ul>
+            
+            <h4>Detection Methods:</h4>
+            <ol>
+                <li>Establish baseline of normal network behavior</li>
+                <li>Monitor for protocol anomalies (e.g., DNS tunneling)</li>
+                <li>Watch for unusual port activity or traffic spikes</li>
+                <li>Implement IDS/IPS systems</li>
+            </ol>
+            
+            <h4>Useful Commands:</h4>
+            <pre><code># ARP watch (Linux)
+arpwatch -i eth0
+
+# Detect ARP spoofing
+arp -a | sort
+
+# Wireshark filter for suspicious DNS
+dns.flags.response == 0 and len(dns.qry.name) > 30</code></pre>
+        `
+    },
+    'stats-modal': {
+        title: 'Security Statistics',
+        content: `
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h4>Top Attack Vectors (2024)</h4>
+                    <ul>
+                        <li>Phishing: 36%</li>
+                        <li>Stolen Credentials: 25%</li>
+                        <li>Vulnerability Exploits: 18%</li>
+                        <li>Misconfigurations: 11%</li>
+                    </ul>
+                </div>
+                <div class="stat-item">
+                    <h4>Detection Times</h4>
+                    <ul>
+                        <li>Average: 207 days</li>
+                        <li>Median: 73 days</li>
+                        <li>90th percentile: 2+ years</li>
+                    </ul>
+                </div>
+                <div class="stat-item">
+                    <h4>Breach Costs</h4>
+                    <ul>
+                        <li>Average total cost: $4.45M</li>
+                        <li>Cost per record: $165</li>
+                        <li>Most expensive sector: Healthcare</li>
+                    </ul>
+                </div>
+                <div class="stat-item">
+                    <h4>Defense ROI</h4>
+                    <ul>
+                        <li>Security awareness training reduces risk by 70%</li>
+                        <li>MFA blocks 99.9% of bulk attacks</li>
+                        <li>Prompt patching prevents 60% of breaches</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h4>Sources:</h4>
+            <ul>
+                <li>Verizon DBIR 2024</li>
+                <li>IBM Cost of a Data Breach Report</li>
+                <li>Microsoft Digital Defense Report</li>
+            </ul>
+        `
+    },
+    'lang-modal': {
+        title: 'Hacking Languages Guide',
+        content: `
+            <div class="language-list">
+                <div class="language">
+                    <h4>Python</h4>
+                    <p><strong>Primary Uses:</strong> Automation, tool development, scripting</p>
+                    <p><strong>Key Libraries:</strong> Requests, Scapy, pwntools, BeautifulSoup</p>
+                    <p><strong>Learning Resource:</strong> <a href="https://www.learnpython.org/" target="_blank">learnpython.org</a></p>
+                </div>
+                <div class="language">
+                    <h4>Bash</h4>
+                    <p><strong>Primary Uses:</strong> Linux system tasks, automation, scripting</p>
+                    <p><strong>Key Concepts:</strong> Piping, redirection, process management</p>
+                    <p><strong>Learning Resource:</strong> <a href="https://linuxcommand.org/" target="_blank">linuxcommand.org</a></p>
+                </div>
+                <div class="language">
+                    <h4>SQL</h4>
+                    <p><strong>Primary Uses:</strong> Database security, injection testing</p>
+                    <p><strong>Key Concepts:</strong> Queries, joins, subqueries, blind SQLi</p>
+                    <p><strong>Learning Resource:</strong> <a href="https://sqlzoo.net/" target="_blank">SQLZoo</a></p>
+                </div>
+            </div>
+            
+            <h4>Learning Path:</h4>
+            <ol>
+                <li>Start with Python for general scripting</li>
+                <li>Learn Bash for Linux system interaction</li>
+                <li>Study SQL for database security</li>
+                <li>Add C for low-level understanding</li>
+                <li>Optional: Learn JavaScript for web-specific testing</li>
+            </ol>
+            
+            <h4>Practice Platforms:</h4>
+            <ul>
+                <li><a href="https://www.hackthebox.com/" target="_blank">Hack The Box</a></li>
+                <li><a href="https://tryhackme.com/" target="_blank">TryHackMe</a></li>
+                <li><a href="https://overthewire.org/wargames/" target="_blank">OverTheWire</a></li>
+            </ul>
+        `
+    }
+};
+
+// Add click handlers for learn more buttons
+document.querySelectorAll('.cyber-learn-more').forEach(button => {
+    button.addEventListener('click', function() {
+        const modalId = this.getAttribute('data-modal');
+        const modalData = cyberModals[modalId];
+        
+        const modalHTML = `
+            <div class="cyber-modal active">
+                <div class="cyber-modal-content">
+                    <span class="cyber-modal-close">&times;</span>
+                    <h3>${modalData.title}</h3>
+                    <div class="cyber-modal-body">
+                        ${modalData.content}
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        
+        // Add close functionality
+        const modal = document.querySelector('.cyber-modal');
+        const closeBtn = document.querySelector('.cyber-modal-close');
+        
+        closeBtn.addEventListener('click', () => modal.remove());
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.remove();
+        });
+    });
+});
